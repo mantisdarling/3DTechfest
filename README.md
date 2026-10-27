@@ -1,27 +1,27 @@
-# Techfest IIT Bombay 2026 — 3D Interactive Website
+# Techfest IIT Bombay 2026: 3D Interactive Website
 
-A fully immersive 3D interactive website for Techfest IIT Bombay — Asia's Largest Science and Technology Festival.
+An immersive 3D interactive website engineered for Techfest IIT Bombay, Asia Largest Science and Technology Festival.
 
-## Features
+## Key Features
 
-* Three.js WebGL 3D engine with animated wireframe geometry and particle fields
-* GSAP ScrollTrigger scroll animations — camera physically moves through 3D space across every section
-* Dynamic section objects: Icosahedron hero, rotating rings, floating tetrahedra, wireframe globe and DNA helix
-* 2,200 particle star field spanning the full scene
-* Animated loading screen with live progress
-* Custom cursor with follower ring
-* Stats counter animation, 3D card tilt and auto scrolling speaker marquee
+* Three.js WebGL 3D graphics engine with synthwave neon lighting and particle fields
+* GSAP ScrollTrigger transitions where the 3D camera glides through virtual space across all sections
+* Dynamic mathematical geometries: central Torus Knot, celestial rings, polyhedra, coordinate globe, and double helix
+* 1200 star particle galaxy field with real time mouse parallax tracking
+* Functional in page registration console with instant digital pass generation
+* Stats counter animations, 3D card tilt physics, and smooth speaker marquee
+* Authentic historical data verified from official records and Wikipedia archives
 
-## Sections
+## Festival Architecture
 
-1. Hero — Animated TF logotype with floating wireframe icosahedron
-2. About — Three category cards with 3D tilt on hover
-3. Events — Six flagship Techfest events with colored orbs
-4. Speakers — Global visionaries marquee and speaker cards
-5. Stats — Animated counters for 190,000 participants, 56 nations and 2,300 colleges
-6. Register — Call to action with DNA helix 3D background
+1. Hero: Techfest TF emblem with animated 3D Torus Knot and core
+2. About: Institutional legacy, UNESCO patronage, and core operational pillars
+3. Events: Flagship competitions including International Robowars and AI Olympiad
+4. Speakers: Nobel Laureates and global visionaries lecture series
+5. Statistics: Verified metrics across attendance, colleges, and participating nations
+6. Registration: Interactive delegate portal generating unique entry passes
 
-## Setup
+## Local Development
 
 ```bash
 npm install
@@ -29,9 +29,9 @@ npm run dev
 npm run build
 ```
 
-## Stack
+## Technology Stack
 
 * Three.js 0.169
 * GSAP 3.12 with ScrollTrigger
-* Vite 5.4
+* Vite 8
 * Orbitron, Space Grotesk, JetBrains Mono
