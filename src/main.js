@@ -51,7 +51,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ============================================================
-// OPTIMIZED THREE.JS 3D SCENE
+// SYNTHWAVE NEON THREE.JS 3D ENGINE
 // ============================================================
 const canvas = document.getElementById('webgl');
 const scene = new THREE.Scene();
@@ -75,23 +75,23 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
 });
 
-// Ambient & 3 Dynamic Point Lights (Cyan, Violet, Emerald)
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+// Ambient & 3 Synthwave Dynamic Point Lights (Magenta Violet, Sunset Coral, Cyan)
+const ambientLight = new THREE.AmbientLight(0x160824, 0.6);
 scene.add(ambientLight);
 
-const pointLight1 = new THREE.PointLight(0x4FC3F7, 9, 32);
+const pointLight1 = new THREE.PointLight(0xE024C3, 9.5, 34);
 pointLight1.position.set(4, 3, 4);
 scene.add(pointLight1);
 
-const pointLight2 = new THREE.PointLight(0x7C3AED, 7, 28);
+const pointLight2 = new THREE.PointLight(0xFF5E3A, 8, 30);
 pointLight2.position.set(-5, -2, 3);
 scene.add(pointLight2);
 
-const pointLight3 = new THREE.PointLight(0x10B981, 5, 22);
+const pointLight3 = new THREE.PointLight(0x06B6D4, 5.5, 24);
 pointLight3.position.set(0, 5, -4);
 scene.add(pointLight3);
 
-// Particle Field (Optimized to 1,200 for 60 FPS performance)
+// Star Particle Field (Optimized to 1,200 for 60 FPS performance)
 const PARTICLE_COUNT = 1200;
 const particlePositions = new Float32Array(PARTICLE_COUNT * 3);
 
@@ -109,7 +109,7 @@ const particleMat = new THREE.PointsMaterial({
   size: 0.045,
   sizeAttenuation: true,
   transparent: true,
-  opacity: 0.5,
+  opacity: 0.52,
   blending: THREE.AdditiveBlending,
   depthWrite: false
 });
@@ -117,13 +117,13 @@ const particleMat = new THREE.PointsMaterial({
 const particles = new THREE.Points(particleGeo, particleMat);
 scene.add(particles);
 
-// Hero Object: Wireframe Icosahedron & Dark Core
+// Hero Object: Neon Magenta Wireframe Icosahedron & Obsidian Core
 const icoGeo = new THREE.IcosahedronGeometry(1.8, 1);
 const icoEdges = new THREE.EdgesGeometry(icoGeo);
 const icoMat = new THREE.LineBasicMaterial({
-  color: 0x4FC3F7,
+  color: 0xE024C3,
   transparent: true,
-  opacity: 0.6,
+  opacity: 0.65,
   blending: THREE.AdditiveBlending
 });
 const icoMesh = new THREE.LineSegments(icoEdges, icoMat);
@@ -132,23 +132,23 @@ scene.add(icoMesh);
 
 const innerIcoGeo = new THREE.IcosahedronGeometry(1.38, 0);
 const innerIcoMat = new THREE.MeshStandardMaterial({
-  color: 0x050510,
-  emissive: 0x0b0e24,
+  color: 0x080210,
+  emissive: 0x1f062c,
   metalness: 0.88,
   roughness: 0.15,
   transparent: true,
-  opacity: 0.85
+  opacity: 0.88
 });
 const innerIco = new THREE.Mesh(innerIcoGeo, innerIcoMat);
 innerIco.position.copy(icoMesh.position);
 scene.add(innerIco);
 
-// Orbiting Torus Ring
+// Radiant Sunset Coral Orbiting Torus
 const torusGeo = new THREE.TorusGeometry(0.92, 0.18, 16, 50);
 const torusMat = new THREE.MeshStandardMaterial({
-  color: 0x7C3AED,
-  emissive: 0x3d007a,
-  metalness: 0.8,
+  color: 0xFF5E3A,
+  emissive: 0x6e1b00,
+  metalness: 0.82,
   roughness: 0.2
 });
 const torus = new THREE.Mesh(torusGeo, torusMat);
@@ -159,9 +159,9 @@ scene.add(torus);
 // Section 1 About: Rotating Celestial Rings
 const ring1Geo = new THREE.TorusGeometry(2.3, 0.024, 8, 100);
 const ring1Mat = new THREE.MeshBasicMaterial({
-  color: 0x4FC3F7,
+  color: 0xFF5E3A,
   transparent: true,
-  opacity: 0.3,
+  opacity: 0.32,
   blending: THREE.AdditiveBlending
 });
 const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
@@ -170,9 +170,9 @@ scene.add(ring1);
 
 const ring2Geo = new THREE.TorusGeometry(2.9, 0.02, 8, 100);
 const ring2Mat = new THREE.MeshBasicMaterial({
-  color: 0x7C3AED,
+  color: 0xE024C3,
   transparent: true,
-  opacity: 0.25,
+  opacity: 0.28,
   blending: THREE.AdditiveBlending
 });
 const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
@@ -180,19 +180,19 @@ ring2.rotation.x = Math.PI * 0.42;
 ring2.visible = false;
 scene.add(ring2);
 
-// Section 2 Events: Floating Polyhedral Tetrahedra
+// Section 2 Events: Floating Synthwave Polyhedra
 const tetraGroup = new THREE.Group();
 tetraGroup.visible = false;
 scene.add(tetraGroup);
 
-const tetraColors = [0x4FC3F7, 0x7C3AED, 0x10B981, 0xF59E0B, 0xEC4899, 0x06B6D4];
+const tetraColors = [0xE024C3, 0xFF5E3A, 0x06B6D4, 0xF59E0B, 0xA855F7, 0xEC4899];
 for (let i = 0; i < 6; i++) {
   const geo = new THREE.TetrahedronGeometry(0.38, 0);
   const edges = new THREE.EdgesGeometry(geo);
   const mat = new THREE.LineBasicMaterial({
     color: tetraColors[i],
     transparent: true,
-    opacity: 0.7,
+    opacity: 0.72,
     blending: THREE.AdditiveBlending
   });
   const mesh = new THREE.LineSegments(edges, mat);
@@ -210,34 +210,34 @@ for (let i = 0; i < 6; i++) {
   tetraGroup.add(mesh);
 }
 
-// Section 4 Stats: Wireframe Coordinate Sphere
+// Section 4 Stats: Sunset Coral Coordinate Sphere
 const sphereGeo = new THREE.SphereGeometry(2, 28, 28);
 const sphereEdgesGeo = new THREE.EdgesGeometry(sphereGeo);
 const sphereMat = new THREE.LineBasicMaterial({
-  color: 0x10B981,
+  color: 0xFF5E3A,
   transparent: true,
-  opacity: 0.3,
+  opacity: 0.32,
   blending: THREE.AdditiveBlending
 });
 const sphereMesh = new THREE.LineSegments(sphereEdgesGeo, sphereMat);
 sphereMesh.visible = false;
 scene.add(sphereMesh);
 
-// Section 5 Register: Double Helix Strand
+// Section 5 Register: Synthwave Double Helix
 const helixGroup = new THREE.Group();
 helixGroup.visible = false;
 scene.add(helixGroup);
 
 const helixMat1 = new THREE.MeshBasicMaterial({
-  color: 0x4FC3F7,
+  color: 0xE024C3,
   transparent: true,
-  opacity: 0.65,
+  opacity: 0.68,
   blending: THREE.AdditiveBlending
 });
 const helixMat2 = new THREE.MeshBasicMaterial({
-  color: 0x7C3AED,
+  color: 0xFF5E3A,
   transparent: true,
-  opacity: 0.65,
+  opacity: 0.68,
   blending: THREE.AdditiveBlending
 });
 
@@ -269,11 +269,11 @@ for (let i = 0; i < 36; i++) {
 }
 helixGroup.position.set(3, 0, 0);
 
-// Ground Perspective Coordinate Grid
-const gridHelper = new THREE.GridHelper(60, 50, 0x111122, 0x080816);
+// Synthwave Violet Coordinate Ground Grid
+const gridHelper = new THREE.GridHelper(60, 50, 0x2D0D4B, 0x120422);
 gridHelper.position.y = -4;
 gridHelper.material.transparent = true;
-gridHelper.material.opacity = 0.45;
+gridHelper.material.opacity = 0.5;
 scene.add(gridHelper);
 
 // Mouse 3D Parallax Tracking
@@ -302,14 +302,14 @@ function setupScrollTransitions() {
         y: gsap.utils.interpolate(0, 1.4, p),
         z: gsap.utils.interpolate(6, 4.6, p)
       });
-      icoMesh.material.opacity = gsap.utils.interpolate(0.6, 0, p);
-      innerIco.material.opacity = gsap.utils.interpolate(0.85, 0, p);
+      icoMesh.material.opacity = gsap.utils.interpolate(0.65, 0, p);
+      innerIco.material.opacity = gsap.utils.interpolate(0.88, 0, p);
       torus.material.opacity = gsap.utils.interpolate(1, 0, p);
       
       ring1.visible = true;
       ring2.visible = true;
-      ring1.material.opacity = gsap.utils.interpolate(0, 0.3, p);
-      ring2.material.opacity = gsap.utils.interpolate(0, 0.25, p);
+      ring1.material.opacity = gsap.utils.interpolate(0, 0.32, p);
+      ring2.material.opacity = gsap.utils.interpolate(0, 0.28, p);
     }
   });
 
@@ -326,13 +326,13 @@ function setupScrollTransitions() {
         y: gsap.utils.interpolate(1.4, 0, p),
         z: gsap.utils.interpolate(4.6, 5.2, p)
       });
-      ring1.material.opacity = gsap.utils.interpolate(0.3, 0, p);
-      ring2.material.opacity = gsap.utils.interpolate(0.25, 0, p);
+      ring1.material.opacity = gsap.utils.interpolate(0.32, 0, p);
+      ring2.material.opacity = gsap.utils.interpolate(0.28, 0, p);
       
       tetraGroup.visible = true;
       tetraGroup.children.forEach((child) => {
         if (child.material) {
-          child.material.opacity = gsap.utils.interpolate(0, 0.7, p);
+          child.material.opacity = gsap.utils.interpolate(0, 0.72, p);
         }
       });
     }
@@ -353,7 +353,7 @@ function setupScrollTransitions() {
       });
       tetraGroup.children.forEach((child) => {
         if (child.material) {
-          child.material.opacity = gsap.utils.interpolate(0.7, 0, p);
+          child.material.opacity = gsap.utils.interpolate(0.72, 0, p);
         }
       });
     }
@@ -373,7 +373,7 @@ function setupScrollTransitions() {
         z: gsap.utils.interpolate(5.5, 5, p)
       });
       sphereMesh.visible = true;
-      sphereMesh.material.opacity = gsap.utils.interpolate(0, 0.3, p);
+      sphereMesh.material.opacity = gsap.utils.interpolate(0, 0.32, p);
       sphereMesh.scale.setScalar(gsap.utils.interpolate(0.4, 1, p));
     }
   });
@@ -386,11 +386,11 @@ function setupScrollTransitions() {
     scrub: 1.2,
     onUpdate: (self) => {
       const p = self.progress;
-      sphereMesh.material.opacity = gsap.utils.interpolate(0.3, 0, p);
+      sphereMesh.material.opacity = gsap.utils.interpolate(0.32, 0, p);
       helixGroup.visible = true;
       helixGroup.children.forEach((child) => {
         if (child.material) {
-          child.material.opacity = gsap.utils.interpolate(0, 0.65, p);
+          child.material.opacity = gsap.utils.interpolate(0, 0.68, p);
         }
       });
     }

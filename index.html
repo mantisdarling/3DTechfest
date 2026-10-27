@@ -18,7 +18,13 @@
     <div class="loader-inner">
       <div class="loader-logo-wrap">
         <svg class="loader-logo" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="8" y="46" font-family="'Orbitron', sans-serif" font-size="46" font-weight="900" fill="#4FC3F7">TF</text>
+          <defs>
+            <linearGradient id="tfLoaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E024C3" />
+              <stop offset="100%" stop-color="#FF5E3A" />
+            </linearGradient>
+          </defs>
+          <text x="8" y="46" font-family="'Orbitron', sans-serif" font-size="46" font-weight="900" fill="url(#tfLoaderGrad)">TF</text>
         </svg>
       </div>
       <div class="loader-bar-wrap">
