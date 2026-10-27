@@ -1,15 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Techfest IIT Bombay 2026 | Asia's Largest Science and Technology Festival</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techfest IIT Bombay 2026 | Asia Largest Science and Technology Festival</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo-wrap">
+        <svg class="loader-logo" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="8" y="46" font-family="'Orbitron', sans-serif" font-size="46" font-weight="900" fill="#4FC3F7">TF</text>
+        </svg>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <div class="loader-label" id="loaderLabel">INITIALIZING SYSTEMS 0 PERCENT</div>
+    </div>
+  </div>
+
+  <!-- Fullscreen WebGL Three.js Canvas -->
+  <canvas id="webgl" class="webgl-canvas"></canvas>
+
+  <!-- Top Navigation -->
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="#">
+      <div class="logo-box">
+        <svg viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="6" y="45" font-family="'Orbitron', sans-serif" font-size="44" font-weight="900" fill="#FFFFFF">TF</text>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-title">TECHFEST</span>
+        <span class="logo-subtitle">IIT BOMBAY</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#events" class="nav-link">Events</a>
+      <a href="#speakers" class="nav-link">Speakers</a>
+      <a href="#stats" class="nav-link">Statistics</a>
+    </div>
+    <a href="#register" class="nav-cta">Register Portal</a>
+  </nav>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Main Scroll Container -->
+  <div class="scroll-container" id="scrollContainer">
+
+    <!-- Section 0: Hero -->
+    <section class="section section-hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge" id="heroBadge">
+          ASIA LARGEST SCIENCE AND TECHNOLOGY FESTIVAL
+        </div>
+        
+        <h1 class="hero-title" id="heroTitle">
+          <span class="line" id="titleLine1">TECHFEST</span>
+          <span class="line accent" id="titleLine2">IIT BOMBAY</span>
+        </h1>
+        
+        <p class="hero-sub" id="heroSub">Where Science Meets Imagination</p>
+        
+        <div class="hero-meta" id="heroMeta">
+          <div class="meta-item">
+            <span class="meta-label">EDITION</span>
+            <span class="meta-val">2026</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">SCHEDULE</span>
+            <span class="meta-val">DECEMBER 19 TO 21</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">VENUE</span>
+            <span class="meta-val">POWAI MUMBAI</span>
+          </div>
+        </div>
+
+        <div class="hero-actions" id="heroActions">
+          <a href="#events" class="btn-primary">Explore Events</a>
+          <a href="#register" class="btn-ghost">Access Portal</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Speakers Ticker -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <div class="marquee-item">Dr APJ Abdul Kalam</div>
+        <div class="marquee-item">Amartya Sen</div>
+        <div class="marquee-item">The 14th Dalai Lama</div>
+        <div class="marquee-item">Ada Yonath</div>
+        <div class="marquee-item">Serge Haroche</div>
+        <div class="marquee-item">Vint Cerf</div>
+        <div class="marquee-item">Bjarne Stroustrup</div>
+        <div class="marquee-item">Jimmy Wales</div>
+        <div class="marquee-item">Rakesh Sharma</div>
+        <div class="marquee-item">Dr APJ Abdul Kalam</div>
+        <div class="marquee-item">Amartya Sen</div>
+        <div class="marquee-item">The 14th Dalai Lama</div>
+        <div class="marquee-item">Ada Yonath</div>
+        <div class="marquee-item">Serge Haroche</div>
+        <div class="marquee-item">Vint Cerf</div>
+        <div class="marquee-item">Bjarne Stroustrup</div>
+        <div class="marquee-item">Jimmy Wales</div>
+        <div class="marquee-item">Rakesh Sharma</div>
+      </div>
+    </div>
+
+    <!-- Section 1: About -->
+    <section class="section section-about" id="about">
+      <div class="panel-label">SECTION 01 ABOUT</div>
+      <div class="about-grid">
+        <div class="about-left">
+          <h2 class="section-title">Redefining<br><span class="accent">Possibility</span></h2>
+          <p class="section-body">
+            Techfest is the annual science and technology festival of the Indian Institute of Technology Bombay. Established in 1998 by the student community of IIT Bombay, the festival operates as a non profit student organization.
+          </p>
+          <p class="section-body">
+            Over twenty eight editions, Techfest has grown into Asia largest gathering of scientific minds, welcoming more than 180,000 attendees across 2,300 universities and 56 participating nations. It holds the patronage of international bodies including UNESCO and UNICEF.
+          </p>
+          <div class="about-tagline">
+            28 Years of Continuous Innovation
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="about-card" data-tilt>
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <h3>Competitions and Hackathons</h3>
+              <p>Challenging coding marathons, aerial robotics, autonomous navigation systems, and clean energy prototypes tested under rigorous real world benchmarks.</p>
+            </div>
+          </div>
+          <div class="about-card" data-tilt>
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <h3>International Robowars</h3>
+              <p>Heavyweight combat robotics championship where remote and autonomous bots clash inside a high velocity reinforced steel arena.</p>
+            </div>
+          </div>
+          <div class="about-card" data-tilt>
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <h3>Ideate Social Innovation</h3>
+              <p>Transformative technical solutions engineered for agriculture, biomedical accessibility, and ecological conservation with venture acceleration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Events -->
+    <section class="section section-events" id="events">
+      <div class="panel-label">SECTION 02 EVENTS</div>
+      <h2 class="section-title centered">Flagship <span class="accent">Events</span></h2>
+      <div class="events-grid">
+        
+        <div class="event-card">
+          <div class="event-number">EVENT 01</div>
+          <div class="event-visual">
+            <div class="event-orb orb-blue"></div>
+          </div>
+          <h3 class="event-name">International Robowars</h3>
+          <p class="event-desc">The crown jewel of combat robotics in Asia. Custom engineered titanium and hardened steel bots battle for supremacy inside an enclosed reinforced arena.</p>
+          <div class="event-tags">
+            <span>Combat Robotics</span>
+            <span>Chassis Design</span>
+            <span>Kinetic Energy</span>
+          </div>
+          <a href="#register" class="event-link">Enroll Team</a>
+        </div>
+
+        <div class="event-card featured">
+          <div class="event-badge">FEATURED</div>
+          <div class="event-number">EVENT 02</div>
+          <div class="event-visual">
+            <div class="event-orb orb-white"></div>
+          </div>
+          <h3 class="event-name">AI Olympiad</h3>
+          <p class="event-desc">Build machine learning architectures and deep reinforcement learning agents that compete across complex stochastic simulation environments.</p>
+          <div class="event-tags">
+            <span>Neural Networks</span>
+            <span>Reinforcement Learning</span>
+            <span>Computer Vision</span>
+          </div>
+          <a href="#register" class="event-link">Enroll Team</a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-number">EVENT 03</div>
+          <div class="event-visual">
+            <div class="event-orb orb-purple"></div>
+          </div>
+          <h3 class="event-name">Cosmos Challenge</h3>
+          <p class="event-desc">Calculate orbital mechanics, plan interplanetary trajectory insertions, and analyze satellite telemetry based on authentic aerospace parameters.</p>
+          <div class="event-tags">
+            <span>Orbital Dynamics</span>
+            <span>Telemetry</span>
+            <span>Deep Space</span>
+          </div>
+          <a href="#register" class="event-link">Enroll Team</a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-number">EVENT 04</div>
+          <div class="event-visual">
+            <div class="event-orb orb-green"></div>
+          </div>
+          <h3 class="event-name">BioSynth Lab</h3>
+          <p class="event-desc">Synthetic biology and computational proteomics challenge where participants model gene circuits and protein folds for targeted cellular therapeutics.</p>
+          <div class="event-tags">
+            <span>Computational Biology</span>
+            <span>Gene Circuits</span>
+            <span>Proteomics</span>
+          </div>
+          <a href="#register" class="event-link">Enroll Team</a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-number">EVENT 05</div>
+          <div class="event-visual">
+            <div class="event-orb orb-orange"></div>
+          </div>
+          <h3 class="event-name">Energy Horizon</h3>
+          <p class="event-desc">Prototype next generation solid state battery chemistries, distributed photovoltaic grids, and green hydrogen power systems for future megacities.</p>
+          <div class="event-tags">
+            <span>Renewable Storage</span>
+            <span>Hydrogen Fuel</span>
+            <span>Grid Analytics</span>
+          </div>
+          <a href="#register" class="event-link">Enroll Team</a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-number">EVENT 06</div>
+          <div class="event-visual">
+            <div class="event-orb orb-cyan"></div>
+          </div>
+          <h3 class="event-name">Quantum Circuit</h3>
+          <p class="event-desc">Formulate quantum superposition circuits, simulate error corrected qubits, and execute algorithmic benchmarks on real cloud quantum hardware.</p>
+          <div class="event-tags">
+            <span>Quantum Algorithms</span>
+            <span>Superposition</span>
+            <span>Cryptography</span>
+          </div>
+          <a href="#register" class="event-link">Enroll Team</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Speakers -->
+    <section class="section section-speakers" id="speakers">
+      <div class="panel-label">SECTION 03 SPEAKERS</div>
+      <h2 class="section-title centered">Global <span class="accent">Visionaries</span></h2>
+      <p class="section-sub centered">Past editions have featured Nobel Laureates, astronauts, and creators who shaped modern technology.</p>
+      
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <div class="speaker-avatar av-1">AK</div>
+          <div class="speaker-info">
+            <h3>Dr APJ Abdul Kalam</h3>
+            <span>11th President of India</span>
+            <p>Visionary aerospace pioneer and President of India who addressed Techfest on World Vision 2030 and solar energy transformation.</p>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-2">AS</div>
+          <div class="speaker-info">
+            <h3>Amartya Sen</h3>
+            <span>Nobel Laureate in Economics</span>
+            <p>Harvard Professor awarded the 1998 Nobel Prize for groundbreaking contributions to welfare economics and social choice theory.</p>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-3">AY</div>
+          <div class="speaker-info">
+            <h3>Ada Yonath</h3>
+            <span>Nobel Laureate in Chemistry</span>
+            <p>Pioneering crystallographer awarded the 2009 Nobel Prize in Chemistry for elucidating the biomolecular structure of the ribosome.</p>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-avatar av-4">VC</div>
+          <div class="speaker-info">
+            <h3>Vint Cerf</h3>
+            <span>Father of the Internet</span>
+            <p>Co creator of the TCP IP protocol suite, establishing the digital infrastructure that connects humanity across the globe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Stats -->
+    <section class="section section-stats" id="stats">
+      <div class="panel-label">SECTION 04 BY THE NUMBERS</div>
+      <div class="stats-wrap">
+        <h2 class="section-title centered">A <span class="accent">Global</span> Phenomenon</h2>
+        <div class="stats-grid">
+          <div class="stat-block" data-count="180000" data-suffix="+" data-label="Annual Participants">
+            <div class="stat-number" id="stat-0">0</div>
+            <div class="stat-label">Annual Participants</div>
+          </div>
+          <div class="stat-block" data-count="56" data-suffix="+" data-label="Nations Represented">
+            <div class="stat-number" id="stat-1">0</div>
+            <div class="stat-label">Nations Represented</div>
+          </div>
+          <div class="stat-block" data-count="2300" data-suffix="+" data-label="Colleges Participating">
+            <div class="stat-number" id="stat-2">0</div>
+            <div class="stat-label">Colleges Participating</div>
+          </div>
+          <div class="stat-block" data-count="28" data-suffix="" data-label="Years of Excellence">
+            <div class="stat-number" id="stat-3">0</div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+        </div>
+
+        <!-- Official Patronage -->
+        <div class="patronage-box">
+          <div class="patronage-label">OFFICIAL PATRONAGE AND RECOGNITION</div>
+          <div class="patronage-items">
+            <span class="patronage-chip">UNESCO</span>
+            <span class="patronage-chip">UNICEF</span>
+            <span class="patronage-chip">Centre for Environment Education</span>
+            <span class="patronage-chip">IIT Bombay Student Gymkhana</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Real Working Interactive Registration Module -->
+    <section class="section section-register" id="register">
+      <div class="panel-label">SECTION 05 REGISTRATION PORTAL</div>
+      <div class="register-content">
+        <div class="reg-tag">OFFICIAL REGISTRATION CONSOLE</div>
+        <h2 class="reg-title">Reserve Your <span class="accent">Delegate Pass</span></h2>
+        <p class="reg-body">Complete your registration to secure access to competitions, keynotes, and technical exhibitions at Techfest 2026.</p>
+
+        <!-- Functional Registration Interface -->
+        <div class="reg-portal-card" id="regPortalCard">
+          <form class="reg-form" id="techfestRegForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="regName">Full Legal Name</label>
+                <input type="text" id="regName" class="form-input" placeholder="e.g. Harsh Mishra" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regEmail">Academic Email</label>
+                <input type="email" id="regEmail" class="form-input" placeholder="e.g. student@iitb.ac.in" required autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="regCollege">Institution or University</label>
+                <input type="text" id="regCollege" class="form-input" placeholder="e.g. IIT Bombay" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regEvent">Primary Track</label>
+                <select id="regEvent" class="form-input form-select" required>
+                  <option value="International Robowars">International Robowars</option>
+                  <option value="AI Olympiad">AI Olympiad</option>
+                  <option value="Cosmos Challenge">Cosmos Challenge</option>
+                  <option value="BioSynth Lab">BioSynth Lab</option>
+                  <option value="Energy Horizon">Energy Horizon</option>
+                  <option value="Quantum Circuit">Quantum Circuit</option>
+                  <option value="Delegate All Access">Delegate All Access</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary form-submit-btn" id="regSubmitBtn">
+              Confirm Registration Pass
+            </button>
+          </form>
+
+          <!-- Confirmed Pass Result Card (Populated Dynamically) -->
+          <div class="reg-success-card" id="regSuccessCard" style="display: none;">
+            <div class="success-header">
+              <div class="success-status">STATUS CONFIRMED</div>
+              <div class="pass-id-text" id="passIdDisplay">PASS TF2026 8492</div>
+            </div>
+            
+            <div class="pass-details-grid">
+              <div class="pass-cell">
+                <span class="pass-label">DELEGATE</span>
+                <span class="pass-val" id="passDelegateName">Name</span>
+              </div>
+              <div class="pass-cell">
+                <span class="pass-label">INSTITUTION</span>
+                <span class="pass-val" id="passCollegeName">University</span>
+              </div>
+              <div class="pass-cell">
+                <span class="pass-label">PRIMARY TRACK</span>
+                <span class="pass-val" id="passTrackName">Track</span>
+              </div>
+              <div class="pass-cell">
+                <span class="pass-label">SECURITY CLEARANCE</span>
+                <span class="pass-val">FULL ACCESS GRANTED</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn-ghost pass-reset-btn" id="passResetBtn">Register Another Delegate</button>
+          </div>
+        </div>
+
+        <div class="reg-footer">
+          <span>Official Inquiries</span>
+          <a href="mailto:techfest@iitb.ac.in">techfest@iitb.ac.in</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clean Authentic Compact Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo-badge">TF</div>
+          <div>
+            <strong>TECHFEST IIT BOMBAY</strong>
+            <p>Student Gymkhana, Powai, Mumbai 400076</p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#events">Events</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#stats">Statistics</a>
+          <a href="#register">Register</a>
+        </div>
+
+        <div class="footer-copy">
+          Techfest 2026 IIT Bombay. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

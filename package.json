@@ -9,14 +9,10 @@
     "preview": "vite preview --port 5301"
   },
   "devDependencies": {
-    "vite": "^8.3.5"
+    "vite": "^5.4.0"
   },
   "dependencies": {
-    "@vitejs/plugin-react": "^6.1.2",
-    "framer-motion": "^14.6.0",
-    "gsap": "^3.12.5",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "gsap": "^3.12.5"
   }
 }
