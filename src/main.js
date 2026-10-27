@@ -117,27 +117,27 @@ const particleMat = new THREE.PointsMaterial({
 const particles = new THREE.Points(particleGeo, particleMat);
 scene.add(particles);
 
-// Hero Object: Neon Magenta Wireframe Icosahedron & Obsidian Core
-const icoGeo = new THREE.IcosahedronGeometry(1.8, 1);
-const icoEdges = new THREE.EdgesGeometry(icoGeo);
-const icoMat = new THREE.LineBasicMaterial({
+// Hero Object: Neon Magenta Torus Knot & Core (Non-Box Fluid 3D Geometry)
+const icoGeo = new THREE.TorusKnotGeometry(1.35, 0.36, 120, 24, 2, 3);
+const icoMat = new THREE.MeshStandardMaterial({
   color: 0xE024C3,
-  transparent: true,
-  opacity: 0.65,
-  blending: THREE.AdditiveBlending
+  emissive: 0x5a044d,
+  roughness: 0.2,
+  metalness: 0.85,
+  wireframe: true
 });
-const icoMesh = new THREE.LineSegments(icoEdges, icoMat);
+const icoMesh = new THREE.Mesh(icoGeo, icoMat);
 icoMesh.position.set(3.4, 0, 0);
 scene.add(icoMesh);
 
-const innerIcoGeo = new THREE.IcosahedronGeometry(1.38, 0);
+const innerIcoGeo = new THREE.SphereGeometry(0.85, 24, 24);
 const innerIcoMat = new THREE.MeshStandardMaterial({
   color: 0x080210,
-  emissive: 0x1f062c,
-  metalness: 0.88,
-  roughness: 0.15,
+  emissive: 0x2d0538,
+  metalness: 0.9,
+  roughness: 0.1,
   transparent: true,
-  opacity: 0.88
+  opacity: 0.9
 });
 const innerIco = new THREE.Mesh(innerIcoGeo, innerIcoMat);
 innerIco.position.copy(icoMesh.position);
